@@ -1,0 +1,29 @@
+meta(charset="utf-8")
+meta(http-equiv="X-UA-Compatible" content="IE=edge")
+title= title
+meta(name="viewport" content="width=device-width, initial-scale=1")
+
+base(href="http://localhost:3000/")
+
+block meta
+  meta(name="description" content="")
+  //- facebook
+  meta(property="og:site_name" content="CopWatcher.com")
+  meta(property="og:type" content="website")
+  meta(property="og:url" content="http://copwatcher.com/my-special-url")
+  meta(property="og:title" content="the page title ie report #222")
+  meta(property="og:image" content="a thumbnail url")
+  //- twitter
+  meta(name="twitter:card" content="summary")
+  meta(name="twitter:url" content="http://copwatcher.com/my-special-url")
+  meta(name="twitter:title" content="the page title ie report #222")
+  meta(name="twitter:description" content="my special page description")
+  meta(name="twitter:image" content="a thumbnail url")
+
+link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/sandstone/bootstrap.min.css")  
+link(rel="stylesheet" href="/css/app.css")
+
+block header_scripts
+  //- script(src="//maps.googleapis.com/maps/api/js?key=AIzaSyCsYsB_regJb9-OsTdAgJ43SOcOIC54Z04")
+  script(src="//maps.googleapis.com/maps/api/js?libraries=weather,geometry,visualization,places&sensor=false&language=en&v=3.17")
+  script(src="/js/app.min.js")

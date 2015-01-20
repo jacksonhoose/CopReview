@@ -1,0 +1,124 @@
+<section ng-controller="FormController as FormCtrl">
+  <form novalidate id="reportForm" name="reportForm" ng-submit="FormCtrl.sendReview(form)">
+    
+    <textarea name="description" required ng-model="form.description"></textarea>
+    
+    <input type="text" name="loc" ng-model="form.loc" required />
+
+    <select name="age" required ng-model="form.age">
+      <option value="Under 12 years old">Under 12 years old</option>
+      <option value="12-17 years old">12-17 years old</option>
+      <option value="18-24 years old">18-24 years old</option>
+      <option value="25-34 years old">25-34 years old</option>
+      <option value="35-44 years old">35-44 years old</option>
+      <option value="45-54 years old">45-54 years old</option>
+      <option value="55-64 years old">55-64 years old</option>
+      <option value="65-74 years old">65-74 years old</option>
+      <option value="75 years or older">75 years or older</option>
+    </select>
+
+    <select name="race" ng-model="form.race" required>
+      <option name="American Indian or Alaska Native">American Indian or Alaska Native</option>
+      <option name="Asian">Asian</option>
+      <option name="Black or African American">Black or African American</option>
+      <option name="Middle Eastern">Middle Eastern</option>
+      <option name="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+      <option name="Hispanic or Latino">Hispanic or Latino</option>
+      <option name="White">White</option>
+      <option name="Other">Other</option>
+    </select>
+
+    <input type="text" name="rating" ng-model="form.rating" required />
+
+    <button type="submit">Submit</button>
+
+  </form>
+</section>
+<!-- var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var reportSchema = new Schema({
+  description: String,
+  
+  loc: {
+    type: {
+      type: String,
+      default: 'Point',
+      required: true
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+      index: {
+        type: '2dsphere'
+      }
+    }
+  },
+
+  policeDepartment: {
+    type: String
+  },
+
+  age: {
+    type: String,
+    required: true,
+    enum: [
+      'Under 12 years old',
+      '12-17 years old',
+      '18-24 years old',
+      '25-34 years old',
+      '35-44 years old',
+      '45-54 years old',
+      '55-64 years old',
+      '65-74 years old',
+      '75 years or older'
+    ]
+  },
+
+  sex: {
+    type: String,
+    required: true,
+    enum: [
+      'Male',
+      'Female',
+      'Other'
+    ]
+  },
+
+  race: {
+    type: String,
+    required: true,
+    enum: [
+      'American Indian or Alaska Native',
+      'Asian',
+      'Black or African American',
+      'Middle Eastern',
+      'Native Hawaiian or Other Pacific Islander',
+      'Hispanic or Latino',
+      'White',
+      'Other'
+    ]
+  },
+
+  rating: {
+    type: Number,
+    required: true,
+    enum: [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+  },
+
+  keywords: {
+    type: []
+  },
+
+  date: {
+    required: true,
+    type: Date  
+  },
+  
+  dateAdded: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+module.exports = mongoose.model('Report', reportSchema); -->
