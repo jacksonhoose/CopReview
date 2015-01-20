@@ -5,29 +5,32 @@ var router = module.exports = require('express').Router(),
  * Create a report
  */
 router.post('/create', function(req, res, next){
-  var data = req.body;
-  var report = new Report(data);
+  var report = new Report(req.body);
   report.save(function(err, report){
     if(err){
-      res.status(500).end();
+      res.status(500).json({
+        err: err
+      });
     }
-    res.json(report);
+    res.status(201).json(report);
   });
 });
 
 /*!
  * display reports 
  */
-router.get('/', function(req, res, next){
-  var params = req.query;
+router.get('/search', function(req, res, next){
+  
+  var coords = req.query.coordinates.split(',');
+
   // Find points within a mile of a point
   Report.geoNear({
     type: 'Point',
-    coordinates:[-72.622342, 42.328964]
+    coordinates: coords
   }, { 
     spherical: true,
     distanceMultiplier: 3959,
-    maxDistance: 1/3959
+    maxDistance: 5/3959 // 5 miles?
   }, function(err, reports) {
     if(err){
       res.status(500).end();

@@ -1,4 +1,4 @@
-var express = require('express');	
+var express = require('express'),
 	 	app = module.exports = express(),
 		morgan = require('morgan'),
 		bodyParser = require('body-parser'),

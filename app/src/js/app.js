@@ -8,10 +8,24 @@ function config($urlRouterProvider, $stateProvider, $httpProvider, $locationProv
       controllerAs: 'HomeCtrl'
     })
     .state('map', {
-      url: '/reports',
+      url: '/reports/:coords?',
       templateUrl: '/views/map.html',
       controller: 'MapController',
-      controllerAs: 'MapCtrl'
+      controllerAs: 'MapCtrl',
+      resolve: {
+        results: function($stateParams, Report){
+          if($stateParams.coords.length){
+            var coords = $stateParams.coords.split(',').map(function(coord){
+              return parseFloat(coord);
+            });
+            return Report.find({ coordinates: coords }).then(function(results){
+              console.log(results);
+              return results;
+            });
+          }
+          return '';
+        }
+      }
     });
 
   $urlRouterProvider.otherwise('/');
@@ -33,7 +47,7 @@ angular
     'copreview.controllers',
     'copreview.factories',
     'uiGmapgoogle-maps',
-    'ui.router'
-    // 'ui.bootstrap'
+    'ui.router',
+    'ui.bootstrap',
   ])
   .config(config);

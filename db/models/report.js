@@ -16,6 +16,30 @@ var reportSchema = new Schema({
       index: {
         type: '2dsphere'
       }
+    },
+    number: {
+      longName: String,
+      shortName: String
+    },
+    street: {
+      longName: String,
+      shortName: String
+    },
+    city: {
+      longName: String,
+      shortName: String
+    },
+    county: {
+      longName: String,
+      shortName: String
+    },
+    zipcode: {
+      longName: String,
+      shortName: String
+    },
+    zipSuffix: {
+      longName: String,
+      shortName: String
     }
   },
 

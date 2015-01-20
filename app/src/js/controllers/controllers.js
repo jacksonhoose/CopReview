@@ -1,22 +1,50 @@
-function MainController($http){
-  
-}
+/*!
+ * Main controller
+ */
+function MainController($http){}
 
-function FormController($http, Report){
+/*!
+ * form controller
+ */
+function FormController(Report){
   this.sendReview = function(form){
-    Report.sendReport(form).then(function(data){
-      console.log('done')
+    /* get coordinate data */
+    Report.getCoordinates(form.loc).then(function(location){
+      /* send report to database */
+      var report = _.extend(form, { loc: location });
+      return Report.sendReport(report).then(function(response){
+        console.log('response', response);
+      }).catch(function(err){
+        console.log(err);
+      });
     });
   };
 }
-FormController.$inject = ['$http', 'Report'];
+FormController.$inject = ['Report'];
 
-function HomeController(){
-  
+/*!
+ * Home controller
+ */
+function HomeController(Report){
+  this.search = function(query){
+    Report.getCoordinates(query).then(function(location){
+      console.log(location.coordinates)
+    }).catch(function(err){
+      //err
+    })
+  };
 }
+HomeController.$inject = ['Report'];
 
-function MapController(uiGmapGoogleMapApi){
+/*!
+ * MapController
+ */
+function MapController(uiGmapGoogleMapApi, Report){
   var ctrl = this;
+
+  uiGmapGoogleMapApi.then(function(maps) {
+
+  });
 
   ctrl.map = {
     models: [],
@@ -26,11 +54,8 @@ function MapController(uiGmapGoogleMapApi){
     },
     zoom: 15
   };
-
- 
 }
-
-MapController.$inject = ['uiGmapGoogleMapApi'];
+MapController.$inject = ['uiGmapGoogleMapApi', 'Report'];
 
 angular
   .module('copreview.controllers', [])
