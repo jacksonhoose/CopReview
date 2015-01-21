@@ -1,7 +1,17 @@
-<h3>Search</h3>
-<form novalidate name="searchForm" ng-submit="HomeCtrl.search(query)">
-  <input type="text" class="form-control" ng-model="query">
-  <button type="submit">
-    Search
-  </button>
-</form>
+<div class="col-md-6 auto-center">
+  <h3 class="text-center">Search</h3>
+  <form novalidate name="searchForm" ng-submit="HomeCtrl.search(query)">
+    <div class="input-group">
+      
+      <input type="text" name="query" ng-minlength="5" class="form-control" placeholder="Search for..." ng-model="query" required>
+      
+      <span class="input-group-btn">
+        <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </span>
+
+    </div>
+  </form>
+  <h3 class="text-center">Or</h3>
+  <button class="btn btn-success btn-lrg auto-center" ng-click="MainCtrl.createAReport()">Submit A Review</button>
+
+</div>

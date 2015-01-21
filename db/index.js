@@ -9,4 +9,4 @@ mongoose.connection.once('open', function(){
   console.log('MongoDB connection is open.');
 });
 
-module.exports = mongoose.connection;
+module.exports = mongoose;

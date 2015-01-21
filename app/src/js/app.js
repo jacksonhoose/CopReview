@@ -1,53 +1,43 @@
-function config($urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, uiGmapGoogleMapApiProvider){
+function config($urlRouterProvider, $stateProvider, $locationProvider){
 
   $stateProvider
     .state('home', {
       url: '/',
       templateUrl: '/views/home.html',
       controller: 'HomeController',
-      controllerAs: 'HomeCtrl'
+      controllerAs: 'HomeCtrl',
+      animation: {
+        enter: 'slide-in-left-fade',
+        leave: 'slide-out-right-fade',
+        ease: 'sine',
+        speed: 400
+      }
     })
-    .state('map', {
-      url: '/reports/:coords?',
+    .state('reports', {
+      url: '/reports?latitude&longitude&distance',
       templateUrl: '/views/map.html',
       controller: 'MapController',
       controllerAs: 'MapCtrl',
-      resolve: {
-        results: function($stateParams, Report){
-          if($stateParams.coords.length){
-            var coords = $stateParams.coords.split(',').map(function(coord){
-              return parseFloat(coord);
-            });
-            return Report.find({ coordinates: coords }).then(function(results){
-              console.log(results);
-              return results;
-            });
-          }
-          return '';
-        }
+      animation: {
+        enter: 'slide-in-left-fade',
+        leave: 'slide-out-right-fade',
+        ease: 'sine',
+        speed: 400
       }
     });
 
   $urlRouterProvider.otherwise('/');
-
-  // uiGmapGoogleMapApiProvider.configure({
-  //   key: 'AIzaSyCsYsB_regJb9-OsTdAgJ43SOcOIC54Z04',
-  //   v: '3.17',
-  //   libraries: 'weather,geometry,visualization'
-  // });
-  
   $locationProvider.html5Mode(true);
-
 }
-
-
 
 angular
   .module('copreview', [
     'copreview.controllers',
     'copreview.factories',
+    'copreview.directives',
     'uiGmapgoogle-maps',
     'ui.router',
     'ui.bootstrap',
+    'ngFx'
   ])
   .config(config);

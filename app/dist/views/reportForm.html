@@ -1,84 +1,85 @@
-<section ng-controller="FormController as FormCtrl" style="display:none;">
+<section ng-controller="FormController as FormCtrl" ng-show="MainCtrl.showForm" class="fx-zoom-normal fx-easing-quad fx-speed-200">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-8">
+      <div class="col-xs-8">
         <form novalidate id="reportForm" name="reportForm" ng-submit="FormCtrl.sendReview(form)">
-          
-          <div class="row">
-            <div class="col-sm-12">
-              <h2>Submit A Report</h2>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea name="description" id="description" class="form-control" required ng-model="form.description"></textarea>
-          </div>
-
-          <div class="form-group">
+          <div class="col-md-8 auto-center cf">
             <div class="row">
-              <div class="col-md-6">
-                <label for="loc">Location</label>
-                <input type="text" id="loc" name="loc" class="form-control" ng-model="form.loc" required />
-              </div>
-              <div class="col-md-6">
-                <label for="date">Date</label><br>
-                <input type="date" name="date" class="form-control" id="date" ng-model="form.date">
+              <div class="col-sm-12">
+                <h1 class="text-center">Submit A Report</h1>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-4">
-                <label for="age">Age</label>
-                <select name="age" class="form-control" id="age" required ng-model="form.age">
-                  <option value="Under 12 years old">Under 12 years old</option>
-                  <option value="12-17 years old">12-17 years old</option>
-                  <option value="18-24 years old">18-24 years old</option>
-                  <option value="25-34 years old">25-34 years old</option>
-                  <option value="35-44 years old">35-44 years old</option>
-                  <option value="45-54 years old">45-54 years old</option>
-                  <option value="55-64 years old">55-64 years old</option>
-                  <option value="65-74 years old">65-74 years old</option>
-                  <option value="75 years or older">75 years or older</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label for="race">Race</label>
-                <select name="race" id="race" class="form-control" ng-model="form.race" required>
-                  <option name="American Indian or Alaska Native">American Indian or Alaska Native</option>
-                  <option name="Asian">Asian</option>
-                  <option name="Black or African American">Black or African American</option>
-                  <option name="Middle Eastern">Middle Eastern</option>
-                  <option name="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
-                  <option name="Hispanic or Latino">Hispanic or Latino</option>
-                  <option name="White">White</option>
-                  <option name="Other">Other</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label for="race">Sex</label>
-                <select name="sex" id="sex" class="form-control" ng-model="form.sex" required>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea name="description" id="description" class="form-control" required ng-model="form.description"></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="loc">Location</label>
+                  <input type="text" id="loc" name="loc" class="form-control" ng-model="form.loc" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="date">Date</label><br>
+                  <input type="date" name="date" class="form-control" id="date" ng-model="form.date">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label>Rating</label><br>
-            <rating ng-model="form.rating" required></rating>
-          </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="age">Age</label>
+                  <select name="age" class="form-control" id="age" required ng-model="form.age">
+                    <option value="Under 12 years old">Under 12 years old</option>
+                    <option value="12-17 years old">12-17 years old</option>
+                    <option value="18-24 years old">18-24 years old</option>
+                    <option value="25-34 years old">25-34 years old</option>
+                    <option value="35-44 years old">35-44 years old</option>
+                    <option value="45-54 years old">45-54 years old</option>
+                    <option value="55-64 years old">55-64 years old</option>
+                    <option value="65-74 years old">65-74 years old</option>
+                    <option value="75 years or older">75 years or older</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="race">Race</label>
+                  <select name="race" id="race" class="form-control" ng-model="form.race" required>
+                    <option name="American Indian or Alaska Native">American Indian or Alaska Native</option>
+                    <option name="Asian">Asian</option>
+                    <option name="Black or African American">Black or African American</option>
+                    <option name="Middle Eastern">Middle Eastern</option>
+                    <option name="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+                    <option name="Hispanic or Latino">Hispanic or Latino</option>
+                    <option name="White">White</option>
+                    <option name="Other">Other</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="race">Sex</label>
+                  <select name="sex" id="sex" class="form-control" ng-model="form.sex" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-          <div class="form-group">
+            <div class="form-group">
+              <label>Rating</label><br>
+              <rating ng-model="form.rating" required></rating>
+            </div>
 
-          </div>
+            <div class="form-group">
 
-          <div class="form-group">
-            <button type="submit" class="btn btn-lrg btn-success">Submit</button>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-lrg btn-success">Submit</button>
+            </div>
           </div>
         </form>
       </div>

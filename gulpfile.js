@@ -38,8 +38,10 @@ gulp.task('javascript', function() {
       paths.src.bower + '/angular-ui-router/release/angular-ui-router.js',
       paths.src.js + '/lib/ui-bootstrap/ui-bootstrap-custom-0.12.0.js',
       paths.src.js + '/lib/ui-bootstrap/ui-bootstrap-custom-tpls-0.12.0.js',
+      paths.src.bower + '/ngAnimations.js/dist/ngFx.js',
       paths.src.js + '/services/factories.js',
       paths.src.js + '/controllers/controllers.js',
+      paths.src.js + '/directives/directives.js',
       paths.src.js + '/app.js'
     ])
     .pipe(concat('app.min.js'))

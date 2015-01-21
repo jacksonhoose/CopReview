@@ -1,4 +1,82 @@
-<ui-gmap-google-map 
-  center="MapCtrl.map.center" 
-  zoom="MapCtrl.map.zoom">
-</ui-gmap-google-map>
+<div class="row">
+  <div class="col-sm-3" id="reportInfo">
+    <div class="row">
+      <div class="col-sm-12">
+        <br>
+        <form novalidate name="searchForm" ng-submit="MapCtrl.search(query)">
+          <div class="input-group">
+            
+            <input type="text" name="query" ng-minlength="5" class="form-control" placeholder="Search for..." ng-model="query" required>
+            
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </span>
+
+          </div>
+        </form>
+      </div>
+    </div>
+    <hr>
+    <h3>Click on a point to learn more</h3>
+    <hr>
+    <div ng-if="MapCtrl.currentDetails">
+      <article>
+        <div class="row">
+          <div class="col-sm-4">
+            <h4>Age</h4>
+            {{ MapCtrl.currentDetails.age }}
+          </div>
+          <div class="col-sm-4">
+            <h4>Sex</h4>
+            {{ MapCtrl.currentDetails.sex }}
+          </div>
+          <div class="col-sm-4">
+            <h4>Race</h4>
+            {{ MapCtrl.currentDetails.race }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <h4>Description:</h4>
+            <p>{{ MapCtrl.currentDetails.description }}</p>
+            <rating readonly="true" ng-model="MapCtrl.currentDetails.rating"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <h4>Date:</h4>
+            {{ MapCtrl.currentDetails.date | date: 'medium' }}
+          </div>
+          <div class="col-sm-6">
+            <h4>Location:</h4>
+            {{ MapCtrl.currentDetails.loc.city.longName }} {{ MapCtrl.currentDetails.loc.state.shortName }}
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="col-sm-9" id="mapContainer">
+    <ui-gmap-google-map 
+      center="MapCtrl.map.center" 
+      zoom="MapCtrl.map.zoom" 
+      pan="MapCtrl.map.pan"
+      full-height>
+
+      <ui-gmap-layer 
+        namespace="visualization" 
+        type="HeatmapLayer" 
+        show="MapCtrl.map.showHeat" 
+        onCreated="MapCtrl.map.heatLayerCallback">
+      </ui-gmap-layer>
+
+      <ui-gmap-markers 
+        models="MapCtrl.map.models"
+        idKey="'_id'" 
+        click="MapCtrl.showDetails"
+        title="whatever"
+        coords="'loc'">
+      </ui-gmap-markers>
+     
+    </ui-gmap-google-map>
+  </div>
+</div>

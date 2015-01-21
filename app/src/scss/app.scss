@@ -3,36 +3,98 @@
 
 $bodyTopPadding: 61px;
 
-html, body {
-  width:100%;
-  height:100%;
-}
-
 body {
   padding-top:$bodyTopPadding;
 }
 
-.angular-google-map-container { 
-  min-height:600px;
-  height: 100%;
-  width:100%; 
+.angular-google-map-container {
+  height:100%;
+  position:absolute;
+  bottom:0;
+  top:0;
+  left:0;
+  right:0;
 }
 
 .nav, .pagination, .carousel, .panel-title a { 
   cursor: pointer; 
 }
 
-#reportForm {
+main {
+  z-index:10;
+  position:fixed;
+  left:0;
+  bottom:0;
+  right:0;
+  top:$bodyTopPadding;
+}
+#reportInfo{
   position:fixed;
   left:0;
   top:$bodyTopPadding;
+  bottom:0;
+}
+#mapContainer{
+  position:fixed;
+  right:0;
+  top:$bodyTopPadding;
+  bottom:0;
+}
+/*
+  form
+ */
+#formView {
+  z-index:200;
+  position:relative;
+}
+#reportForm {
+  position:fixed;
+  left:0;
+  top:0;
   right:0;
   bottom:0;
-  background: rgba(255, 255, 255, .8);
+  background: #fff;
   padding:20px;
+  z-index:1000;
 }
 
 .glyphicon-star, .glyphicon-star-empty {
   color:gold;
   font-size:22px;
+}
+
+/*
+  util
+ */
+.auto-center {
+  display:block;
+  margin:0 auto;
+  float:none;
+}
+
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
 }

@@ -6,14 +6,13 @@ html(lang="en" class="no-js" ng-app="copreview")
   
   body(ng-controller="MainController as MainCtrl")
     include _partials/header.jade
+
+    div(ng-include="'/views/reportForm.html'" id="formView")
     
-    main(role="main" id="main" class="container")
-      a(href="/reports") reprots
-      
+    main(role="main" id="main" class="max-container")
+    
       block content
         div(ui-view)
-
-    div(ng-include="'/views/reportForm.html'")
 
     footer(role="footer" id="footer" class="container")
   

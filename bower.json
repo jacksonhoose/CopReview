@@ -20,6 +20,7 @@
     "angular-ui-router": "~0.2.13",
     "gmaps": "hpneo/gmaps#~0.4.16",
     "bootstrap": "angular-ui/bootstrap#~0.12.0",
-    "angular-google-maps": "angular-ui/angular-google-maps#~2.0.12"
+    "angular-google-maps": "angular-ui/angular-google-maps#~2.0.12",
+    "ngAnimations.js": "Hendrixer/ngFx#~1.0.5"
   }
 }

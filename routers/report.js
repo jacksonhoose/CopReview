@@ -6,13 +6,13 @@ var router = module.exports = require('express').Router(),
  */
 router.post('/create', function(req, res, next){
   var report = new Report(req.body);
-  report.save(function(err, report){
+  report.save(function(err, result){
     if(err){
       res.status(500).json({
         err: err
       });
     }
-    res.status(201).json(report);
+    res.status(201).json(result);
   });
 });
 
@@ -21,21 +21,26 @@ router.post('/create', function(req, res, next){
  */
 router.get('/search', function(req, res, next){
   
-  var coords = req.query.coordinates.split(',');
+  var latitude = parseFloat(req.query.latitude);
+  var longitude = parseFloat(req.query.longitude);
+  var distance = req.query.distance || 1;
 
   // Find points within a mile of a point
   Report.geoNear({
     type: 'Point',
-    coordinates: coords
+    coordinates: [longitude, latitude]
   }, { 
     spherical: true,
     distanceMultiplier: 3959,
-    maxDistance: 5/3959 // 5 miles?
+    minDistance: 0,
+    maxDistance: distance/3959
   }, function(err, reports) {
     if(err){
-      res.status(500).end();
+      res.status(500).json({
+        err: err
+      });
     }
-    res.json(reports);
+    res.status(200).json(reports);
   });
 
 });
